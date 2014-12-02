@@ -1,8 +1,6 @@
-/*
- * This class is used to model the collection of bible books.
- * A book consists of multiple chapters, each chapter consists of verses
- * and a verse consists of an array of words.
- * 
+/**
+ * Class is used to model the entire bible collection.
+ * The bible collection will consist of book, chapter and verse objects.
  */
 import java.util.HashMap;
 
@@ -14,7 +12,6 @@ public class BibleMap {
 	{
 		books = new HashMap<>();
 		
-		// bible map bible map oh la la bible map BIBLEMAP
 	}
 
 }
