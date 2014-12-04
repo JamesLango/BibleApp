@@ -4,11 +4,11 @@ import java.util.ArrayList;
  * This will store each word of the verse. 
  */
 public class Verse {
-	private ArrayList words;
+	private String words;
 	
 	public Verse()
 	{
-		words = new ArrayList();
+		words = "";
 	}
 	
 	/**
@@ -18,7 +18,12 @@ public class Verse {
 	
 	public void addWord(String word)
 	{
-	words.add(word);	
+		words += word;	
+	}
+	
+	public String getVerse()
+	{
+		return words;
 	}
 
 }
