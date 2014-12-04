@@ -7,17 +7,18 @@ public class Word {
 	private int wordCount;
 	private Location location;
 	
-	private ArrayList locationList;
+	private ArrayList<Location> locationList;
 	
 	public Word(String word)
 	{	
 		wordValue = word;
+		locationList = new ArrayList<>();
 			
 	}
 	
 	public void updateLocList(Verse v)
 	{
-	//locationList.add(v.getLocation().getLocation().getName(), v.getLocation().getIndex(), v.getIndex());
+		//locationList.add(v.getLocation().getLocation().getName(), v.getLocation().getIndex(), v.getIndex());
 	}
 
 	public void incrementWordCount()

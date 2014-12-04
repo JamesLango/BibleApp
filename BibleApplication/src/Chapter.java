@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.ArrayList;
 /**
  * A class to model an individual chapter within a book.
  * A chapter will hold multiple Verses.
@@ -6,11 +6,11 @@ import java.util.HashMap;
  */
 public class Chapter {
 	
-	private HashMap<Integer, Verse> verses;
+	private ArrayList<Verse> verses;
 	
 	public Chapter()
 	{
-		verses = new HashMap<>();
+		verses = new ArrayList<>();
 	}
 	
 	/**
@@ -19,9 +19,9 @@ public class Chapter {
 	 * @param verse to be added.
 	 */
 	
-	public void addVerse(Integer verseNo, Verse verseObj)
+	public void addVerse(Verse verseObj)
 	{
-		verses.put(verseNo, verseObj);
+		verses.add(verseObj);
 	}
 	
 	/**
@@ -32,7 +32,7 @@ public class Chapter {
 	
 	public Verse getVerse(Integer verseNo)
 	{
-		return verses.get(verseNo);
+		return verses.get(verseNo-1);
 	}
 
 }

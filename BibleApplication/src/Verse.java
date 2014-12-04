@@ -3,11 +3,13 @@
  * This will store each word of the verse. 
  */
 public class Verse {
-	private String words;
+	private String line;
+	private int index;
 	
-	public Verse()
+	public Verse(int i, String l)
 	{
-		words = "";
+		line = l;
+		index = i;
 	}
 	
 	/**
@@ -17,14 +19,13 @@ public class Verse {
 	
 	public void addWord(String word)
 	{
-		words += word;	
+		line += word;	
 	}
 	
 	public String getVerse()
 	{
-		return words;
+		return line;
 	}
-	
 
 
 }
