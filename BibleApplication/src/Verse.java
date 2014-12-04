@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 /**
  * Class to model each individual verse in the bible.
  * This will store each word of the verse. 
@@ -25,5 +24,7 @@ public class Verse {
 	{
 		return words;
 	}
+	
+
 
 }

@@ -5,7 +5,7 @@
 public class Location {
 	
 	private String bookName;
-	private int chapterNo;
+	private int chapterNo; 
 	private int verseNo;
 	
 	public Location(String b, int c, int v)
