@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Tree {
+public class BibleTree<T> {
 	
 	// constructor for a node.
     public static class Node<V,N> {
