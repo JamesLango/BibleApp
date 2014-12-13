@@ -22,6 +22,7 @@ public class BibleMap<T> {
 	public BibleMap()
 	{
 		x = new HashMap<>();
+		Node test = new Node
 		
 	}
 	
