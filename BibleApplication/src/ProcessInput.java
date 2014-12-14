@@ -53,7 +53,7 @@ private boolean running = true;
 				
 				else
 				{
-					//errorMessage();
+					errorMessage();
 				}
 					
 				}
@@ -61,13 +61,13 @@ private boolean running = true;
 			
 			else if(commandWord.equals("verses"))
 			{
-				//if(bStore.containsWord(commandArr[1]))
+				if(bStore.containsWord(commandArr[1]))
 					{
-						System.out.print(bStore.getWord(commandArr[1]).getVerses()); // >>>>need a method in Word to output the verses 
-						// fix
+						System.out.print(bStore.getWord(commandArr[1]).getVerses()); 
+						
 					}
 					
-					//else
+					else
 					{
 						System.out.print("The word was not found.");
 					}
@@ -87,6 +87,11 @@ private boolean running = true;
 			}
 			
 			
+	}
+	
+	public void processFile(File folder)
+	{
+		bStore.populateBible(folder);
 	}
 	
 	
@@ -111,7 +116,7 @@ private boolean running = true;
 	
 	public void errorMessage()
 	{
-		System.out.println("That command could not be recognised. Please try again. Type "help" for a help menu.");
+		System.out.println("That command could not be recognised. Please try again. Type 'help' for a help menu.");
 	}
 	
 	

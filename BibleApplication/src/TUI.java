@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 /*
@@ -12,6 +13,7 @@ public class TUI {
 	private static String userInput;
 	private static String[] commandString;
 	private String commandWord;
+	private static String fileLocation;
 	private Scanner user_input;
 	private static ProcessInput processInput;
 	
@@ -21,6 +23,7 @@ public class TUI {
 		
 		while(processInput.running())
 		{
+		fileInput();
 		testInput();
 		}
 	}
@@ -41,5 +44,22 @@ public class TUI {
 	{
 		return userInput.split("\\s");
 	}
-
+	
+	public static void fileInput()
+	{
+		Scanner user_input = new Scanner(System.in);
+		System.out.println("Please enter file location:\n");
+		fileLocation = "";
+		fileLocation = user_input.nextLine();
+		final File folder = new File(fileLocation);
+		processInput.processFile(folder);
+		
+		//System.out.print(fileLocation);
+		//System.out.print(folder.isDirectory());
+		//for (final File fileEntry : folder.listFiles()) {
+	    //System.out.println("FileEntry Directory "+fileEntry);
+		}
 }
+
+
+
