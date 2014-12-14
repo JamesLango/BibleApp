@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Word {
 	
 	private String wordValue;
-	private int wordCount;
+	private int wordCount = 0;
 	private Location location;
 	
 	private ArrayList<Location> locationList;

@@ -4,12 +4,11 @@
  */
 public class Verse extends BibleComponent {
 	private String line;
-	private int index;
 	
-	public Verse(int i, String l)
+	public Verse(String index, String l)
 	{
+		super(index);
 		line = l;
-		index = i;
 	}
 	
 	/**

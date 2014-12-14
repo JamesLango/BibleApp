@@ -27,7 +27,19 @@ public class BookTree { // implements Iterable<> {
 	private void addVerse(Verse v, Chapter c) {
 		bookRoot.getChild(c).addChild(v);
 	}
-
+	
+	public Book getBook() {
+		return (Book) bookRoot.getComponent();
+	}
+	
+	public Chapter getChapter(Chapter c) { // parameters should be changed to take in a string
+		return (Chapter) bookRoot.getChild(c).getComponent();
+	}
+			
+	public Verse getVerse(Chapter c, Verse v) { // parameters should be changed to take in a string
+		return (Verse) bookRoot.getChild(c).getChild(v).getComponent();
+	}
+	
 	public void populate() {
 		
 		// Adding stuff to the bible
@@ -91,7 +103,7 @@ public class BookTree { // implements Iterable<> {
 				//}
 			//}
 		}	
-	}
+
 	
 	
 	/**
@@ -128,6 +140,7 @@ public class BookTree { // implements Iterable<> {
 						return children.get(i);
 					}
 				}
+	
 			}
 			return null;
 		}

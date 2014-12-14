@@ -9,11 +9,10 @@ import java.util.ArrayList;
 public class Book extends BibleComponent {
 	
 	//private ArrayList<Chapter> chapters; >> now in the tree
-	private String name;
 	
 	public Book (String name)
 	{	
-		this.name = name;
+		super(name);
 		//chapters = new ArrayList<>();
 	}
 	
@@ -22,8 +21,8 @@ public class Book extends BibleComponent {
 	 * @param chapter number to be retrieved.
 	 * @return chapter object referenced by chapter number.
 	 */
-	public Chapter getChapter(Integer chapNo)
-	{
-		return chapters.get(chapNo-1);	
-	}
+	//public Chapter getChapter(Integer chapNo)
+	//{
+	//	return chapters.get(chapNo-1);	
+	//}
 }

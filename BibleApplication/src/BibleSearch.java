@@ -11,7 +11,7 @@ public class BibleSearch {
 		
 		bible = new BibleTreeMap();
 		
-		bible.populate();
+		//bible.populate();
 		
 	}
 	

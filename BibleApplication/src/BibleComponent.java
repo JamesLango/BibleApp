@@ -1,12 +1,15 @@
 
 public abstract class BibleComponent {
 
-	private 
+	protected String identifier;
 	
-	public BibleComponent() 
-	{
-		
+	//public words.contains(BibleComponent(String name));
+	//{
+	//	identifier = name;
+	//}
+	
+	public String getIdentifier() {
+		return identifier;
 	}
-	
 	
 }

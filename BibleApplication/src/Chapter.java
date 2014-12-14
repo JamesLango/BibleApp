@@ -8,8 +8,9 @@ public class Chapter extends BibleComponent {
 	
 	private ArrayList<Verse> verses;
 	
-	public Chapter()
+	public Chapter(String index)
 	{
+		super(index);
 		verses = new ArrayList<>();
 	}
 	
