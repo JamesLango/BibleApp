@@ -109,7 +109,10 @@ private boolean running = true;
 		return running;
 	}
 	
-	public void 
+	public void errorMessage()
+	{
+		System.out.println("That command could not be recognised. Please try again. Type "help" for a help menu.");
+	}
 	
 	
 	
