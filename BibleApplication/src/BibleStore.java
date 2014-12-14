@@ -22,7 +22,7 @@ public class BibleStore {
 		return words.get(w).getWordObject();
 	}
 	
-	private void populateBible(File folder) { // some how pass in the folder name to sort it out?
+	public void populateBible(File folder) { // some how pass in the folder name to sort it out?
 		
 		
 		
