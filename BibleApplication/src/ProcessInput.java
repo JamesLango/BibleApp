@@ -8,7 +8,7 @@ public class ProcessInput
 {
 private final String[] validCommands = {"help", "exit", "count", "verses", "location", "findChapter", "findRange", "findVerse"};
 private String commandWord;
-private BibleStore2 bStore;
+private BibleStore bStore;
 private String commandArr[];
 private boolean running = true;
 
