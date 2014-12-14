@@ -16,6 +16,7 @@ public class TUI {
 	private static String fileLocation;
 	private Scanner user_input;
 	private static ProcessInput processInput;
+	private static boolean hasFile=false;
 	
 	public static void main(String[] args)
 	{
@@ -23,7 +24,10 @@ public class TUI {
 		
 		while(processInput.running())
 		{
-		fileInput();
+			while(!hasFile)
+			{
+			fileInput();
+			}
 		testInput();
 		}
 	}
@@ -52,7 +56,16 @@ public class TUI {
 		fileLocation = "";
 		fileLocation = user_input.nextLine();
 		final File folder = new File(fileLocation);
+		
+		if(folder.isDirectory())
+		{
 		processInput.processFile(folder);
+		hasFile = true;
+		}
+		else
+		{
+			System.out.print("File not recognised please try again.\n");
+		}
 		
 		//System.out.print(fileLocation);
 		//System.out.print(folder.isDirectory());
