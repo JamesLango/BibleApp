@@ -1,12 +1,12 @@
 import java.util.HashMap;
 
-public class BibleStore {
+public class BibleStore2 {
 	// a collection of trees, which contain the books, chapters and verses of the bible
 	private HashMap<String, BookTree> bibles;
 	// a hashset of the unique words in the bible
 	private HashMap<String, Word> words;
 	
-	public BibleStore() {
+	public BibleStore2() {
 		bibles = new HashMap<String, BookTree>(); // key is the bible name, so KJBible
 		words = new HashMap<String, Word>();
 		
