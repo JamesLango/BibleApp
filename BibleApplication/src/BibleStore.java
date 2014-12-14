@@ -1,17 +1,21 @@
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class BibleTreeMap {
+public class BibleStore {
 	// a collection of trees, which contain the books, chapters and verses of the bible
 	private HashMap<String, BookTree> bibles;
 	// a hashset of the unique words in the bible
-	private HashSet<Word> words;
+	private HashMap<String, Word> words;
 	
-	public BibleTreeMap() {
+	public BibleStore() {
 		bibles = new HashMap<String, BookTree>(); // key is the bible name, so KJBible
-		words = new HashSet<Word>();
+		words = new HashMap<String, Word>();
 		
 		populateBible();
+	}
+	public HashMap<String, Word> getMap()
+	{
+		return words;
 	}
 	
 	private void populateBible() { // some how pass in the folder name to sort it out?

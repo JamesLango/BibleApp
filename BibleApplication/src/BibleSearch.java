@@ -5,11 +5,11 @@
 
 public class BibleSearch {
 
-	private BibleTreeMap bible;
+	private BibleStore bible;
 	
 	public BibleSearch() {
 		
-		bible = new BibleTreeMap();
+		bible = new BibleStore();
 		
 		//bible.populate();
 		

@@ -31,4 +31,8 @@ public class Word {
 		return wordValue;
 	}
 	
+	public String getVerses()
+	{
+		return null;
+	}
 }
