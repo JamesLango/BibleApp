@@ -89,7 +89,7 @@ private boolean running = true;
 			
 	}
 	
-	public void processFile(File folder)
+	public void processFile(String folder)
 	{
 		bStore.populateBible(folder);
 	}

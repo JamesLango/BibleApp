@@ -59,7 +59,7 @@ public class TUI {
 		
 		if(folder.isDirectory())
 		{
-		processInput.processFile(folder);
+		processInput.processFile(fileLocation);
 		hasFile = true;
 		}
 		else
