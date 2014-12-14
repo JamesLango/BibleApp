@@ -16,9 +16,9 @@ public class Word {
 			
 	}
 	
-	public void updateLocList(Verse v)
+	public void updateLocList(Location l)
 	{
-		//locationList.add(v.getLocation().getLocation().getName(), v.getLocation().getIndex(), v.getIndex());
+		locationList.add(l);
 	}
 
 	public void incrementWordCount()
@@ -50,5 +50,9 @@ public class Word {
 	public ArrayList<Location> getVerses()
 	{
 		return locationList;
+	}
+	
+	public Location getLocation() {
+		return location;
 	}
 }

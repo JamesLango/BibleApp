@@ -1,12 +1,15 @@
 import java.util.HashMap;
+import java.util.Scanner;
+import java.io.File;
 
 public class BibleStore {
 	// a collection of trees, which contain the books, chapters and verses of the bible
 	private HashMap<String, BookTree> bibles;
 	// a hashset of the unique words in the bible
 	private HashMap<String, Word> words;
+	private File bibleSource;
 	
-	public BibleStore() {
+	public BibleStore(File folder) {
 		bibles = new HashMap<String, BookTree>(); // key is the bible name, so KJBible
 		words = new HashMap<String, Word>();
 		
@@ -22,6 +25,15 @@ public class BibleStore {
 	}
 	
 	private void populateBible() { // some how pass in the folder name to sort it out?
+		
+		
+		
+		for (final File fileEntry : bibleSource.listFiles()) {
+	    System.out.println("FileEntry Directory "+fileEntry);
+		
+		
+		
+		
 		
 		for (int i = 0; "input has next file (book)"; i++)
 		{
@@ -40,9 +52,7 @@ public class BibleStore {
 					String line = ""; // this will be the line read in from processInput	
 						
 					Verse v = new Verse(k.toString(),line);
-					bookTree.addVerse(v,c);
-					
-					Location l = new Location(book.getIdentifier(), c.getIdentifier(), v.getIdentifier());		
+					bookTree.addVerse(v,c);		
 							
 					// if statement to check whether the word that has been scanned in is unique
 								
@@ -54,7 +64,8 @@ public class BibleStore {
 						words.put(w.getString(), w);				
 					}
 					words.get(w.getString()).getWordObject().incrementWordCount();
-					words.get(w.getString()).getWordObject().updateLocList();
+					Location loc = new Location(book.getIdentifier(), c.getIdentifier(), v.getIdentifier());
+					words.get(w.getString()).getWordObject().updateLocList(loc);
 				}
 			}	
 		}	
@@ -75,18 +86,6 @@ public class BibleStore {
 	
 public void populate() { // change method name
 		
-	}
-	
-	private void addBook(Book b) {
-		//
-	}
-	
-	private void addChapter(Chapter c) {
-		
-	}
-	
-	private void addVerse(Verse v) {
-	
 	}
 	
 	private void addWord() {

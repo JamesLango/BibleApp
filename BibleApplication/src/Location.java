@@ -10,12 +10,11 @@ public class Location {
 	
 	public Location(String b, String c, String v)
 	{
-		
+		bookName = b;
+		chapterNo = c;
+		verseNo = v;
 	}
 	
-
-	
-
 	public String getBookName()
 	{
 		return bookName;
