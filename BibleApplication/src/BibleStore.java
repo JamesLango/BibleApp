@@ -9,11 +9,9 @@ public class BibleStore {
 	private HashMap<String, Word> words;
 	private File bibleSource;
 	
-	public BibleStore(File folder) {
+	public BibleStore() {
 		bibles = new HashMap<String, BookTree>(); // key is the bible name, so KJBible
 		words = new HashMap<String, Word>();
-		
-		populateBible();
 	}
 	
 	public HashMap<String, Word> getMap() {
@@ -24,7 +22,7 @@ public class BibleStore {
 		return words.get(w).getWordObject();
 	}
 	
-	private void populateBible() { // some how pass in the folder name to sort it out?
+	private void populateBible(File folder) { // some how pass in the folder name to sort it out?
 		
 		
 		
