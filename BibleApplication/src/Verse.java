@@ -2,7 +2,7 @@
  * Class to model each individual verse in the bible.
  * This will store each word of the verse. 
  */
-public class Verse {
+public class Verse extends BibleComponent {
 	private String line;
 	private int index;
 	

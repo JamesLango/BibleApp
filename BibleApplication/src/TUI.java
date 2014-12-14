@@ -9,7 +9,7 @@ public class TUI {
 	
 private static Scanner user_input;
 private static String test;
-	
+
 
 	public TUI(){
 	}

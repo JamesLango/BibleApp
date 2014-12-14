@@ -6,25 +6,15 @@ import java.util.ArrayList;
  *
  */
 
-public class Book {
+public class Book extends BibleComponent {
 	
-	private ArrayList<Chapter> chapters;
+	//private ArrayList<Chapter> chapters; >> now in the tree
 	private String name;
 	
 	public Book (String name)
 	{	
 		this.name = name;
-		chapters = new ArrayList<>();
-	}
-
-	/**
-	 * A method to add chapters to the chapters collection ArrayList.
-	 * @param chapter number.
-	 * @param chapter to be added.
-	 */
-	public void addChapter(Chapter chapObj)
-	{
-		chapters.add(chapObj);
+		//chapters = new ArrayList<>();
 	}
 	
 	/**

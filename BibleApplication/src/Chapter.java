@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * A chapter will hold multiple Verses.
  *
  */
-public class Chapter {
+public class Chapter extends BibleComponent {
 	
 	private ArrayList<Verse> verses;
 	
