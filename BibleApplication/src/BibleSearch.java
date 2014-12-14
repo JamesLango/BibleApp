@@ -5,33 +5,15 @@
 
 public class BibleSearch {
 
-	private BibleTreeMap bible;
+	private BibleStore bible;
 	
 	public BibleSearch() {
 		
-		bible = new BibleTreeMap();
+		bible = new BibleStore();
 		
 		//bible.populate();
 		
 	}
 	
-	public void populate() { // change method name
-		
-	}
-	
-	private void addBook(Book b) {
-		
-	}
-	
-	private void addChapter(Chapter c) {
-		
-	}
-	
-	private void addVerse(Verse v) {
-	
-	}
-	
-	private void addWord() {
-		
-	}
+	// algorithms for retrieval omitted
 }

@@ -5,10 +5,10 @@
 public class Location {
 	
 	private String bookName;
-	private int chapterNo; 
-	private int verseNo;
+	private String chapterNo; 
+	private String verseNo;
 	
-	public Location(String b, int c, int v)
+	public Location(String b, String c, String v)
 	{
 		
 	}
@@ -21,12 +21,12 @@ public class Location {
 		return bookName;
 	}
 	
-	public int getChapterLocation()
+	public String getChapterLocation()
 	{
 		return chapterNo;
 	}
 	
-	public int getVerseLocation()
+	public String getVerseLocation()
 	{
 		return verseNo;
 	}

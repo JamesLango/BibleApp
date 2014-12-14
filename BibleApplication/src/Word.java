@@ -26,9 +26,24 @@ public class Word {
 		wordCount++;
 	}
 	
+	
+	public String getString() {
+		return wordValue;
+	}
+	
+	public Word getWordObject() {
+		return this;
+	}
+	
+	/**
+	 * 
+	 */
 	public String toString()
 	{
 		return wordValue;
 	}
 	
+	public int getCount() {
+		return wordCount;
+	}
 }
