@@ -35,5 +35,9 @@ public class Chapter extends BibleComponent {
 	{
 		return verses.get(verseNo-1);
 	}
+	
+	public String toString() {
+		return identifier;
+	}
 
 }

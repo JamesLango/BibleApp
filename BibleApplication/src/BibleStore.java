@@ -14,8 +14,12 @@ public class BibleStore {
 		words = new HashMap<String, Word>();
 	}
 	
-	public HashMap<String, Word> getMap() {
+	public HashMap<String, Word> getWords() {
 		return words;
+	}
+	
+	public HashMap<String, BookTree> getBible() {
+		return bibles;
 	}
 	
 	public Word getWord(String w) {
@@ -57,26 +61,32 @@ public class BibleStore {
 						words.put(w.getString(), w);				
 					}
 					words.get(w.getString()).getWordObject().incrementWordCount();
-					Location loc = new Location(book.getIdentifier(), c.getIdentifier(), v.getIdentifier());
-					words.get(w.getString()).getWordObject().updateLocList(loc);
+					//Location loc = new Location(book.getIdentifier(), c.getIdentifier(), v.getIdentifier());
+					//words.get(w.getString()).getWordObject().updateLocList(loc);
 				}
 			}	
 		}	
 	}
 	
-	public int getWordCount(String w) {
-		return words.get(w).getWordObject().getCount();
-	}
 	
-	public boolean containsWord(String s) {
-		return words.containsKey(s);
-	}
+	
+	
 	
 	public void containsBibleComponent(String s) { //boolean
 		//return bibles.containsKey(s); ///////////////////////////////////////////
 	}
 	
-	public Location getLocations() {
-		return null;
+	
+	
+	public String getVerseString(Location l) {
+		return bibles.get(l.getBookName()).getVerse(l.getChapter(), l.getVerse()).toString();
+		// physical 
 	}
+	
+	/**
+	 * 
+	 */
+	
+	
+	
 }

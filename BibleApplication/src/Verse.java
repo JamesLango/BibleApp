@@ -25,6 +25,10 @@ public class Verse extends BibleComponent {
 	{
 		return line;
 	}
+	
+	public String toString() {
+		return line;
+	}
 
 
 }

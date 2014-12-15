@@ -4,33 +4,45 @@
  */
 public class Location {
 	
-	private String bookName;
-	private String chapterNo; 
-	private String verseNo;
+	private Book book;
+	private Chapter chapter; 
+	private Verse verse;
 	
-	public Location(String b, String c, String v)
+	public Location(Book b, Chapter c, Verse v)
 	{
-		bookName = b;
-		chapterNo = c;
-		verseNo = v;
+		book = b;
+		chapter = c;
+		verse = v;
 	}
 	
 	public String getBookName()
 	{
-		return bookName;
+		return book.getIdentifier();
 	}
 	
 	public String getChapterLocation()
 	{
-		return chapterNo;
+		return chapter.getIdentifier();
 	}
 	
 	public String getVerseLocation()
 	{
-		return verseNo;
+		return verse.getIdentifier();
+	}
+	
+	public Book getBook() {
+		return book;
+	}
+	
+	public Chapter getChapter() {
+		return chapter;
+	}
+	
+	public Verse getVerse() {
+		return verse;
 	}
 
 	public String toString() {
-		return bookName + " " + chapterNo + ": " + verseNo + "\n";
+		return getBookName() + " " + getChapterLocation() + ": " + getVerseLocation() + "\n";
 	}
 }

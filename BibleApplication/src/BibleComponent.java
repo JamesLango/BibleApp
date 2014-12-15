@@ -3,7 +3,7 @@ public abstract class BibleComponent {
 
 	protected String identifier;
 	
-	public words.contains(BibleComponent(String name));
+	public BibleComponent(String name)
 	{
 		identifier = name;
 	}
@@ -12,4 +12,8 @@ public abstract class BibleComponent {
 		return identifier;
 	}
 	
+	public abstract String toString();
+	
+	
+	//words.contains(BibleComponent(String name));
 }

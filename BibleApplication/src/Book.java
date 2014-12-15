@@ -25,4 +25,8 @@ public class Book extends BibleComponent {
 	//{
 	//	return chapters.get(chapNo-1);	
 	//}
+	
+	public String toString() {
+		return identifier;
+	}
 }

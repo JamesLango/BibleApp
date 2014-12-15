@@ -36,13 +36,7 @@ public class BookTree { // implements Iterable<> {
 			
 	public Verse getVerse(Chapter c, Verse v) { // parameters should be changed to take in a string
 		return (Verse) bookRoot.getChild(c).getChild(v).getComponent();
-	}
-	
-	public void populate() {
-		
 	}	
-
-	
 	
 	/**
 	 * 
@@ -91,10 +85,6 @@ public class BookTree { // implements Iterable<> {
 			return partOfBible;
 		}
 	}
-
-	//public Iterator<> iterate() {
-	//	return null; //
-	//}
 }
 
 /**
