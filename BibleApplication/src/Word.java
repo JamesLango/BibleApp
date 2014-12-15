@@ -46,12 +46,12 @@ public class Word {
 		return wordCount;
 	}
 	
-	public ArrayList<Location> getVerses()
+	public ArrayList<Location> getLocationList()
 	{
 		return locationList;
 	}
 	
-	public String getLocations() 
+	public String getLocationStrings() 
 	{
 		String locs = "";
 		
