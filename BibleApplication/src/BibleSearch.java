@@ -42,5 +42,45 @@ public class BibleSearch {
 		return w.getLocationStrings();
 	}
 	
+	public String findVerse(String book, String chapter, String verse) {
+		// Job 4:11
+		Book b = bible.getBible().get(book).getBook();
+		Chapter c = bible.getBible().get(book).getChapter(chapter);
+		Verse v = bible.getBible().get(book).getVerse(chapter, verse);
+		Location l = new Location(b,c,v);
+		
+		return bible.getVerseString(l) + "\n";
+	}
+	
+	public String findRange(String book, String chapter, String firstVerse, String endVerse) {
+		// Job 4:11-14
+		int end = Integer.parseInt(endVerse);
+		int current = Integer.parseInt(firstVerse);
+		
+		String range = "";
+		
+		for (int i = current; i < end; i++) {
+			range += findVerse(book, chapter, Integer.toString(current)) + "\n";
+		}
+		
+		return range;
+	}
+	
+	public String findChapter(String book, String chapter) {
+		// Job 4
+		String chapterOutput = "";
+		
+		ArrayList<Verse> verses = bible.getBible().get(book).getChapter(chapter).getVerseChildren();
+		
+		for (int i = 0; i < verses.size(); i++) {
+			 chapterOutput += verses.get(i).getIdentifier() + " " + verses.get(i).getVerse() + "\n";
+		}
+		
+		return chapterOutput;
+	}
+	
+	
+	
+	
 	// algorithms for retrieval omitted
 }

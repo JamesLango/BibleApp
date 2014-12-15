@@ -30,11 +30,11 @@ public class BookTree { // implements Iterable<> {
 		return (Book) bookRoot.getComponent();
 	}
 	
-	public Chapter getChapter(Chapter c) { // parameters should be changed to take in a string
+	public Chapter getChapter(String c) { // parameters should be changed to take in a string
 		return (Chapter) bookRoot.getChild(c).getComponent();
 	}
 			
-	public Verse getVerse(Chapter c, Verse v) { // parameters should be changed to take in a string
+	public Verse getVerse(String c, String v) { // parameters should be changed to take in a string
 		return (Verse) bookRoot.getChild(c).getChild(v).getComponent();
 	}	
 	
@@ -65,10 +65,10 @@ public class BookTree { // implements Iterable<> {
 		 * @param b The bible component to get, if it is a child.
 		 * @return the Node matching the bible component required.
 		 */
-		public Node<BibleComponent> getChild(BibleComponent b) {
+		public Node<BibleComponent> getChild(String bibleComp) {
 			if (children != null) {
 				for (int i = 0; i < children.size(); i++) {
-					if (children.get(i).getComponent() == b) {
+					if (children.get(i).getComponent().toString().equals(bibleComp)) {
 						return children.get(i);
 					}
 				}

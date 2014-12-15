@@ -39,5 +39,9 @@ public class Chapter extends BibleComponent {
 	public String toString() {
 		return identifier;
 	}
+	
+	public ArrayList<Verse> getVerseChildren() {
+		return verses;
+	}
 
 }

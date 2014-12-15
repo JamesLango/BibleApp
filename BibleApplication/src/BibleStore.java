@@ -4,13 +4,13 @@ import java.io.File;
 
 public class BibleStore {
 	// a collection of trees, which contain the books, chapters and verses of the bible
-	private HashMap<String, BookTree> bibles;
+	private HashMap<String, BookTree> books;
 	// a hashset of the unique words in the bible
 	private HashMap<String, Word> words;
 	private File bibleSource;
 	
 	public BibleStore() {
-		bibles = new HashMap<String, BookTree>(); // key is the bible name, so KJBible
+		books = new HashMap<String, BookTree>(); // key is the bible name, so KJBible
 		words = new HashMap<String, Word>();
 	}
 	
@@ -19,7 +19,7 @@ public class BibleStore {
 	}
 	
 	public HashMap<String, BookTree> getBible() {
-		return bibles;
+		return books;
 	}
 	
 	public Word getWord(String w) {
@@ -36,7 +36,7 @@ public class BibleStore {
 		{
 			Book book = new Book("bookName");
 			BookTree bookTree = new BookTree(book);
-			bibles.put(book.getIdentifier(), bookTree);
+			books.put(book.getIdentifier(), bookTree);
 		
 			for(Integer j = 0; "book has another chapter"; i++)
 			{
@@ -79,7 +79,7 @@ public class BibleStore {
 	
 	
 	public String getVerseString(Location l) {
-		return bibles.get(l.getBookName()).getVerse(l.getChapter(), l.getVerse()).toString();
+		return books.get(l.getBookName()).getVerse(l.getChapterLocation(), l.getVerseLocation()).toString();
 		// physical 
 	}
 	
