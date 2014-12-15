@@ -29,4 +29,8 @@ public class Location {
 	{
 		return verseNo;
 	}
+
+	public String toString() {
+		return bookName + " " + chapterNo + ": " + verseNo + "\n";
+	}
 }

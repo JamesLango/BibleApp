@@ -26,14 +26,9 @@ public class BibleStore {
 		
 		File folder = new File(f);
 		
-		for (final File fileEntry : bibleSource.listFiles()) {
-	    System.out.println("FileEntry Directory "+fileEntry);
+		File[] files = bibleSource.listFiles();
 		
-		
-		
-		
-		
-		for (int i = 0; "input has next file (book)"; i++)
+		for (int i = 1; i <= files.length; i++)
 		{
 			Book book = new Book("bookName");
 			BookTree bookTree = new BookTree(book);
@@ -81,12 +76,7 @@ public class BibleStore {
 		//return bibles.containsKey(s); ///////////////////////////////////////////
 	}
 	
-	
-public void populate() { // change method name
-		
-	}
-	
-	private void addWord() {
-		
+	public Location getLocations() {
+		return null;
 	}
 }

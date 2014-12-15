@@ -5,7 +5,6 @@ public class Word {
 	
 	private String wordValue;
 	private int wordCount = 0;
-	private Location location;
 	
 	private ArrayList<Location> locationList;
 	
@@ -52,7 +51,15 @@ public class Word {
 		return locationList;
 	}
 	
-	public Location getLocation() {
-		return location;
+	public String getLocations() 
+	{
+		String locs = "";
+		
+		for (int i = 0; i < locationList.size(); i++) 
+		{
+			locs += locationList.get(i).toString() + "\n"; // go through tree
+		}
+		
+		return locs;
 	}
 }
