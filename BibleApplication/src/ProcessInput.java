@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.io.File;
@@ -8,14 +9,14 @@ public class ProcessInput
 {
 private final String[] validCommands = {"help", "exit", "count", "verses", "location", "findChapter", "findRange", "findVerse"};
 private String commandWord;
-private BibleStore bStore;
+private BibleSearch bSearch;
 private String commandArr[];
 private boolean running = true;
 
 
 	public ProcessInput()
 	{
-	//wordSet = bs.getMap();
+	
 	}
 
 
@@ -40,12 +41,12 @@ private boolean running = true;
 			{
 				if(this.commandArr[1] != null)
 				{
-					// if(bStore.containsWord(commandArr[1]))
+					if(bSearch.containsWord(commandArr[1]))
 					{
-						//System.out.print((bStore.get(commandString[1])).getWordCount());
+						System.out.print((bSearch.getWordCount(commandArr[1])));
 					}
 					
-					//else
+					else
 					{
 						System.out.print("The word was not found.");
 					}
@@ -61,10 +62,9 @@ private boolean running = true;
 			
 			else if(commandWord.equals("verses"))
 			{
-				if(bStore.containsWord(commandArr[1]))
+				if(bSearch.containsWord(commandArr[1]))
 					{
-						System.out.print(bStore.getWord(commandArr[1]).getVerses()); 
-						
+						bSearch.getVerses(commandArr[1]);
 					}
 					
 					else
@@ -75,15 +75,54 @@ private boolean running = true;
 					
 			else if(commandWord.equals("location"))
 			{
-				//if(bStore.containsKey(commandArr[1]))
+				if(bSearch.containsWord(commandArr[1]))
 				{
-					//System.out.print(bStore.getLocation(commandArr[1]).getVerses()); // need a method in Word to output the verses 
+					bSearch.getLocations(commandArr[1]);
 				}
 					
-				//else
+				else
 				{
 					System.out.print("The word was not found.");
 				}	
+			}
+		
+			else if(commandWord.equals("findChapter"))
+			{
+				if(commandArr[1]!=null && commandArr[2]!=null)
+				{
+					bSearch.findChapter(commandArr[1], commandArr[2]);
+				}
+				
+				else
+				{
+					errorMessage();
+				}
+			}
+		
+			else if(commandWord.equals("findRange"))
+			{
+				if(commandArr[1]!=null && commandArr[2]!=null && commandArr[3]!=null && commandArr[4]!=null)
+				{
+					bSearch.findRange(commandArr[1],commandArr[2],commandArr[3],commandArr[4]);
+				}
+				
+				else
+				{
+					errorMessage();
+				}
+			}
+		
+			else if(commandWord.equals("findChapter"))
+			{
+				if(commandArr[1]!=null && commandArr[2]!=null )
+				{
+					bSearch.findChapter(commandArr[1],commandArr[2]);
+				}
+				
+				else
+				{
+					errorMessage();
+				}
 			}
 			
 			
@@ -91,7 +130,7 @@ private boolean running = true;
 	
 	public void processFile(String folder)
 	{
-		bStore.populateBible(folder);
+		bSearch.getBibleStore().populateBible(folder);
 	}
 	
 	
