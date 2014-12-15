@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public class Chapter extends BibleComponent {
 	
-	private ArrayList<Verse> verses;
+	private ArrayList<Verse> verses; // NEEDS TO BE TAKEN OUT - USE NODES IN TREE
 	
 	public Chapter(String index)
 	{

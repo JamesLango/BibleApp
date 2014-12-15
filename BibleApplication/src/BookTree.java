@@ -37,7 +37,7 @@ public class BookTree { // implements Iterable<> {
 	public Verse getVerse(String c, String v) { // parameters should be changed to take in a string
 		return (Verse) bookRoot.getChild(c).getChild(v).getComponent();
 	}	
-	
+		
 	/**
 	 * 
 	 */

@@ -16,7 +16,7 @@ private boolean running = true;
 
 	public ProcessInput()
 	{
-	
+		bSearch = new BibleSearch();
 	}
 
 
