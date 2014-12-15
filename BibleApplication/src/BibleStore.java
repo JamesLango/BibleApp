@@ -124,8 +124,4 @@ public class BibleStore {
 	 * 
 	 */
 	
-	public BibleStore getBStore() {
-		return this;
-	}
-	
 }

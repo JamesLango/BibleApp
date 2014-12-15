@@ -79,7 +79,9 @@ public class BibleSearch {
 		return chapterOutput;
 	}
 	
-	
+	public BibleStore getBibleStore() {
+		return bible;
+	}
 	
 	
 	// algorithms for retrieval omitted
