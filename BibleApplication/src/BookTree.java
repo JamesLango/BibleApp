@@ -18,12 +18,13 @@ public class BookTree { // implements Iterable<> {
 		
 	}
 	
-	public void addChapter(Chapter c) { //private?
-		bookRoot.addChild(c);
+	public void addChapter(String c) { //private?
+		Chapter chapter = new Chapter(c);
+		bookRoot.addChild(chapter);
 	}
 	
-	public void addVerse(Verse v, Chapter c) { //private?
-		bookRoot.getChild(c.getIdentifier()).addChild(v);
+	public void addVerse(String v, String c) { //private?
+		bookRoot.getChild(c).addChild(new Verse(v, c));
 	}
 	
 	public Book getBook() {
@@ -53,6 +54,7 @@ public class BookTree { // implements Iterable<> {
 		
 		public void addChild(BibleComponent n) {
 			Node<BibleComponent> newNode = new Node<BibleComponent>(n);
+			System.out.println("New child being added:" + newNode.getComponent());
 			children.add(newNode);
 		}
 			

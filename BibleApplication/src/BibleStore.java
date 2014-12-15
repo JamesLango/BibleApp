@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class BibleStore {
 	// a collection of trees, which contain the books, chapters and verses of the bible
@@ -38,58 +40,82 @@ public class BibleStore {
 		for (int i = 0; i < files.length; i++) // while there is still a book 
 		{
 			String[] file = files[i].getName().split(".txt");
-			Book book = new Book(file[0]);
+			Book book = new Book(file[0]); // remove extension, and then use the first index (name)
 			BookTree bookTree = new BookTree(book);
 			books.put(book.getIdentifier(), bookTree);
 			
-			//System.out.println(books.containsKey("Ken1")); // checks
-			//System.out.println(books.containsKey("Ken2"));//
-			//System.out.println(books.containsKey("Peter"));//
-		
-		
-			
-		
-			/*BufferedReader reader = new BufferedReader(new FileReader(files[i]));
-			String line = reader.readLine();
-			while (line!= null) {}*/
-					
-			BufferedReader r = new BufferedReader(new FileReader(files[i]));
-			String line = r.readLine(); // first line of the book (title)
 			
 			
-		
-			for(Integer j = 0; r.readLine() != null; i++) // while there is still a chapter in the book
-			{
+			try {
 				
-				Chapter c = new Chapter(j.toString());
-				bookTree.addChapter(c);
-						
-				for (Integer k = 0; r.readLine() != null; i++) // there is still a verse left         ////// RETHINK:::::: readLine will move it on, 
-				{		
-					String verseLine = line; // this will be the line read in from processInput	
-						
-					Verse v = new Verse(k.toString(),verseLine);
-					bookTree.addVerse(v,c);		
-							
-					// if statement to check whether the word that has been scanned in is unique
-								
-					Word w = new Word("word");
-								
-					if(!words.containsKey(w.getString())) //
-					{
-						//Word w = new Word("word"); // added before the if statement to check if it exists
-						words.put(w.getString(), w);				
+				BufferedReader r = new BufferedReader(new FileReader(files[i]));
+				String line = r.readLine(); // first line of the book (title)
+				
+				for(Integer j = 0; line != null; i++) // while there is still a chapter in the book
+				{
+					String[] tmp = line.split(" ");
+					
+					while (!tmp[0].equals("CHAPTER")) { // check if the line starts with CHAPTER, else read next line until so
+						line = r.readLine();
+						tmp = line.split(" ");
 					}
-					words.get(w.getString()).getWordObject().incrementWordCount();
-					//Location loc = new Location(book.getIdentifier(), c.getIdentifier(), v.getIdentifier());
-					//words.get(w.getString()).getWordObject().updateLocList(loc);
-				}
-			}	
+					
+					bookTree.addChapter(j.toString());
+					
+					for (Integer k = 0; line != null; i++) // there is still a verse left         ////// RETHINK:::::: readLine will move it on, 
+					{		
+						
+						String verseLine = r.readLine(); // this will be the line read in from processInput	
+						String[] wordArr = verseLine.split(" "); // an array of all the words and the punctuation
+						
+						
+						bookTree.addVerse(k.toString(),verseLine);		
+								
+						// if statement to check whether the word that has been scanned in is unique
+									
+						Word w = new Word("word");
+									
+						if(!words.containsKey(w.getString())) //
+						{
+							//Word w = new Word("word"); // added before the if statement to check if it exists
+							words.put(w.getString(), w);				
+						}
+						words.get(w.getString()).getWordObject().incrementWordCount();
+						//Location loc = new Location(book.getIdentifier(), c.getIdentifier(), v.getIdentifier());
+						//words.get(w.getString()).getWordObject().updateLocList(loc);
+						System.out.println(verseLine);
+					}
+					r.close();
+				}	
+				
+			}
+			catch(FileNotFoundException e) {
+				
+			}
+			catch (IOException e) {
+				
+			}
+			
+			
 		}	
+			
+		/*BufferedReader reader = new BufferedReader(new FileReader(files[i]));
+		String line = reader.readLine();
+		while (line!= null) {}*/
+		checkBooksStored();
+	}
+	
+	public String findNextChapter() {
+		return null;
 	}
 	
 	
 	
+	public void checkBooksStored() {
+		System.out.println(books.containsKey("Ken1") + "Ken1"); // checks
+		System.out.println(books.containsKey("Ken2") + "Ken2");//
+		System.out.println(books.containsKey("Peter") + "Peter");//
+	}
 	
 	
 	public boolean containsBook(String s) { 
