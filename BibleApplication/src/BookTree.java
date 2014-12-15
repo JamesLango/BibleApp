@@ -23,7 +23,7 @@ public class BookTree { // implements Iterable<> {
 	}
 	
 	public void addVerse(Verse v, Chapter c) { //private?
-		bookRoot.getChild(c).addChild(v);
+		bookRoot.getChild(c.getIdentifier()).addChild(v);
 	}
 	
 	public Book getBook() {
