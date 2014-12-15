@@ -38,8 +38,9 @@ public class BibleSearch {
 		return bible.getWords().containsKey(s);
 	}
 	
-	public String getLocations(Word w) {
-		return w.getLocationStrings();
+	public String getLocations(String w) {
+		Word word = bible.getWords().get(w);
+		return word.getLocationStrings();
 	}
 	
 	public String findVerse(String book, String chapter, String verse) {
