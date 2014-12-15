@@ -36,6 +36,7 @@ public class BibleStore {
 		
 		File bibleSource = new File(f);
 		File[] files = bibleSource.listFiles();
+		System.out.println("The number of files in the folder is: " + files.length);
 		
 		for (int i = 0; i < files.length; i++) // while there is still a book 
 		{
@@ -43,6 +44,7 @@ public class BibleStore {
 			Book book = new Book(file[0]); // remove extension, and then use the first index (name)
 			BookTree bookTree = new BookTree(book);
 			books.put(book.getIdentifier(), bookTree);
+			System.out.println("For book with name: " + file[i]);
 			
 			
 			
@@ -50,26 +52,26 @@ public class BibleStore {
 				
 				BufferedReader r = new BufferedReader(new FileReader(files[i]));
 				String line = r.readLine(); // first line of the book (title)
-				
-				for(Integer j = 0; line != null; i++) // while there is still a chapter in the book
+				System.out.println("The Title of this book is: " + line);
+				for(Integer j = 0; ; j++) // while there is still a chapter in the book <<<<<<<< FIND CONDITION
 				{
 					String[] tmp = line.split(" ");
-					
 					while (!tmp[0].equals("CHAPTER")) { // check if the line starts with CHAPTER, else read next line until so
 						line = r.readLine();
 						tmp = line.split(" ");
 					}
-					
+					line = r.readLine(); // first verse
 					bookTree.addChapter(j.toString());
+					System.out.println("For Chapter stored: " + bookTree.getChapter(j.toString()));
 					
-					for (Integer k = 0; line != null; i++) // there is still a verse left         ////// RETHINK:::::: readLine will move it on, 
+					for (Integer k = 0; !line.trim().isEmpty(); k++) // there is still a verse left         ////// RETHINK:::::: readLine will move it on, 
 					{		
-						
-						String verseLine = r.readLine(); // this will be the line read in from processInput	
+						System.out.println("The current value of LINE is: " + line);
+						String verseLine = line; // this will be the line read in from processInput	
 						String[] wordArr = verseLine.split(" "); // an array of all the words and the punctuation
+						System.out.println("VerseLine = " + verseLine);
 						
-						
-						bookTree.addVerse(k.toString(),verseLine);		
+						bookTree.addVerse(verseLine, j.toString());		
 								
 						// if statement to check whether the word that has been scanned in is unique
 									
@@ -83,12 +85,16 @@ public class BibleStore {
 						words.get(w.getString()).getWordObject().incrementWordCount();
 						//Location loc = new Location(book.getIdentifier(), c.getIdentifier(), v.getIdentifier());
 						//words.get(w.getString()).getWordObject().updateLocList(loc);
-						System.out.println(verseLine);
-					}
+						//System.out.println(verseLine);
+						
+						line = r.readLine();
+						System.out.println();
+					} 
 					r.close();
-				}	
-				
+				}
 			}
+			
+			
 			catch(FileNotFoundException e) {
 				
 			}
@@ -96,13 +102,11 @@ public class BibleStore {
 				
 			}
 			
-			
-		}	
-			
 		/*BufferedReader reader = new BufferedReader(new FileReader(files[i]));
 		String line = reader.readLine();
 		while (line!= null) {}*/
 		checkBooksStored();
+		}
 	}
 	
 	public String findNextChapter() {
@@ -129,6 +133,5 @@ public class BibleStore {
 	public String getVerseString(Location l) {
 		return books.get(l.getBookName()).getVerse(l.getChapterLocation(), l.getVerseLocation()).toString();
 		// physical 
-	}
-	
+	}	
 }

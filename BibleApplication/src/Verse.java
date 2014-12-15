@@ -5,7 +5,7 @@
 public class Verse extends BibleComponent {
 	private String line;
 	
-	public Verse(String index, String l)
+	public Verse(String l, String index)
 	{
 		super(index);
 		line = l;

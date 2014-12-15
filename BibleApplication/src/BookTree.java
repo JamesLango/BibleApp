@@ -18,13 +18,17 @@ public class BookTree { // implements Iterable<> {
 		
 	}
 	
-	public void addChapter(String c) { //private?
+	public void addChapter(String c) { 
 		Chapter chapter = new Chapter(c);
+		//System.out.println("Chapter index is " + c);
+		//System.out.println(chapter.toString());
 		bookRoot.addChild(chapter);
 	}
 	
-	public void addVerse(String v, String c) { //private?
-		bookRoot.getChild(c).addChild(new Verse(v, c));
+	public void addVerse(String v, String c) { 
+		Verse verse = new Verse(v, c);
+		System.out.println("The verse as stored is: " + verse.getVerse());
+		bookRoot.getChild(c).addChild(verse);
 	}
 	
 	public Book getBook() {
@@ -48,13 +52,13 @@ public class BookTree { // implements Iterable<> {
 		public ArrayList<Node<BibleComponent>> children;
 				
 		public Node(BibleComponent comp) {
-			children = null;
+			children = new ArrayList<Node<BibleComponent>>();
 			partOfBible = comp;
 		}
 		
 		public void addChild(BibleComponent n) {
 			Node<BibleComponent> newNode = new Node<BibleComponent>(n);
-			System.out.println("New child being added:" + newNode.getComponent());
+			//System.out.println("New child being added:" + newNode.getComponent());
 			children.add(newNode);
 		}
 			
