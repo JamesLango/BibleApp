@@ -15,6 +15,7 @@ public class BibleStore {
 	private File bibleSource;
 	private Scanner s;
 	
+	
 	public BibleStore() {
 		books = new HashMap<String, BookTree>(); // key is the bible name, so KJBible
 		words = new HashMap<String, Word>();
@@ -41,6 +42,9 @@ public class BibleStore {
 		
 		for (int i = 0; i < files.length; i++) // while there is still a book 
 		{
+			boolean nextChapter = true;
+			boolean nextVerse = true;
+		
 			String[] file = files[i].getName().split(".txt");
 			Book book = new Book(file[0]); // remove extension, and then use the first index (name)
 			BookTree bookTree = new BookTree(book);
@@ -53,20 +57,26 @@ public class BibleStore {
 				String line = r.readLine(); // first line of the book (title)
 				System.out.println(">> Currently storing book: " + line);
 				
-				for(Integer j = 0; line != null && !line.trim().isEmpty(); j++) // while there is still a chapter in the book
+				line = r.readLine(); // < blank line
+				
+				String nextLine = r.readLine(); // < CHAPTER
+				
+				for(Integer j = 0; nextLine != null && line.trim().isEmpty() && nextChapter; j++) // while there is still a chapter in the book // the line is blank
 				{
 					String[] tmp = line.split(" ");
-					while (!tmp[0].equals("CHAPTER")) { // check if the line starts with CHAPTER, else read next line until so
-						line = r.readLine();
+					while (!checkIfUpperCase(tmp[0])) { // check if the line starts with CHAPTER, else read next line until so
+						line = nextLine;
+						nextLine = r.readLine(); // line = chapter 2
 						tmp = line.split(" ");
 					}
-					line = r.readLine(); // first verse-
+					line = nextLine; // 1 once upon a time
+					System.out.println("First line is: " + line);
 					Chapter chapter = new Chapter(j.toString());
 					bookTree.addChapter(chapter.getIdentifier());
 					System.out.println("Currently storing chapter: " + bookTree.getChapter(j.toString())); // THIS IS ALWAYS 0??????????
 					System.out.println(j);
 					
-					for (Integer k = 0; !line.trim().isEmpty(); k++) // there is still a verse left         ////// RETHINK:::::: readLine will move it on, 
+					for (Integer k = 0; nextVerse && !line.trim().isEmpty(); k++) // there is still a verse left         ////// RETHINK:::::: readLine will move it on, 
 					{		
 						System.out.println("For verse: " + k);
 						String verseLine = line; // this will be the line read in from processInput	
@@ -88,8 +98,15 @@ public class BibleStore {
 						words.get(w.getString()).getWordObject().updateLocList(loc);
 						
 						line = r.readLine();
+						if(line == null) {
+						nextVerse = false;						
+						}
+						
 					}
-					
+					if ((nextLine = r.readLine()) == null) {
+						nextChapter = false;
+					}
+					//nextLine = r.readLine();//nextChapter = r.readLine();
 				} 
 				
 			}
@@ -108,7 +125,7 @@ public class BibleStore {
 				catch (Exception e) { }
 			}
 		}	 
-		checkBooksStored();
+		//checkBooksStored();
 	}
 	
 	public void checkBooksStored() {
@@ -116,6 +133,7 @@ public class BibleStore {
 		System.out.println(books.containsKey("Ken2") + "Ken2");//
 		System.out.println(books.containsKey("Peter") + "Peter");//
 	}
+	
 	
 	
 	public boolean containsBook(String s) { 
@@ -130,5 +148,17 @@ public class BibleStore {
 		return books.get(l.getBookName()).getVerse(l.getChapterLocation(), l.getVerseLocation()).toString();
 		// physical 
 	}	
+	
+	private boolean checkIfUpperCase(String s) {
+		char[] word = s.toCharArray();
+		for (int i = 0; i < word.length; i++) 
+		{
+			if (!Character.isUpperCase(s.charAt(i))) 
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 }
 

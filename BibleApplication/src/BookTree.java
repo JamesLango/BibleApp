@@ -28,7 +28,7 @@ public class BookTree { // implements Iterable<> {
 	
 	public void addVerse(String v, String c) { 
 		Verse verse = new Verse(v, c);
-		System.out.println("The verse as stored is: " + verse.toString());
+		System.out.println("The verse is stored as: " + verse.toString());
 		bookRoot.getChild(c).addChild(verse);
 	}
 	
