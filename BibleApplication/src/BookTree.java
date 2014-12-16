@@ -15,13 +15,14 @@ public class BookTree { // implements Iterable<> {
 	public BookTree(Book b) {
 		
 		bookRoot = new Node<BibleComponent>(b);
+		System.out.println("Book ID : " + bookRoot.getComponent().getIdentifier());
 		
 	}
 	
 	public void addChapter(String c) { 
 		Chapter chapter = new Chapter(c);
-		//System.out.println("Chapter index is " + c);
-		//System.out.println(chapter.toString());
+		System.out.println("Chapter index is " + c);
+		System.out.println(chapter.toString());
 		bookRoot.addChild(chapter);
 	}
 	

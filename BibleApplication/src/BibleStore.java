@@ -53,20 +53,22 @@ public class BibleStore {
 				String line = r.readLine(); // first line of the book (title)
 				System.out.println(">> Currently storing book: " + line);
 				
-				for(Integer j = 0; line != null && !line.trim().isEmpty(); j++) // while there is still a chapter in the book <<<<<<<< FIND CONDITION
+				for(Integer j = 0; line != null && !line.trim().isEmpty(); j++) // while there is still a chapter in the book
 				{
 					String[] tmp = line.split(" ");
 					while (!tmp[0].equals("CHAPTER")) { // check if the line starts with CHAPTER, else read next line until so
 						line = r.readLine();
 						tmp = line.split(" ");
 					}
-					line = r.readLine(); // first verse
+					line = r.readLine(); // first verse-
 					Chapter chapter = new Chapter(j.toString());
 					bookTree.addChapter(chapter.getIdentifier());
 					System.out.println("Currently storing chapter: " + bookTree.getChapter(j.toString())); // THIS IS ALWAYS 0??????????
+					System.out.println(j);
 					
 					for (Integer k = 0; !line.trim().isEmpty(); k++) // there is still a verse left         ////// RETHINK:::::: readLine will move it on, 
 					{		
+						System.out.println("For verse: " + k);
 						String verseLine = line; // this will be the line read in from processInput	
 						String[] wordArr = verseLine.split(" "); // an array of all the words and the punctuation
 						
@@ -129,3 +131,4 @@ public class BibleStore {
 		// physical 
 	}	
 }
+
