@@ -10,10 +10,7 @@ public class BibleSearch {
 	
 	public BibleSearch() {
 		
-		bible = new BibleStore();
-		
-		//bible.populate();
-		
+		bible = new BibleStore();		
 	}
 	
 	public String getVerses(String w) {
@@ -70,11 +67,18 @@ public class BibleSearch {
 	public String findChapter(String book, String chapter) {
 		// Job 4
 		String chapterOutput = "";
+		 
+		System.out.println("The book is :" + book);
+		System.out.println("The chapter is :" + chapter);
+		ArrayList<BibleComponent> verses = new ArrayList<BibleComponent>();
 		
-		ArrayList<Verse> verses = bible.getBible().get(book).getChapter(chapter).getVerseChildren();
+		verses = bible.getBookTree(book).getChapterChildren(chapter);
+		
+		
+		
 		
 		for (int i = 0; i < verses.size(); i++) {
-			 chapterOutput += verses.get(i).getIdentifier() + " " + verses.get(i).getVerse() + "\n";
+			 chapterOutput += verses.get(i).getIdentifier() + " " + verses.get(i).toString() + "\n";
 		}
 		
 		return chapterOutput;

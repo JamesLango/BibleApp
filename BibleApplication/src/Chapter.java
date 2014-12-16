@@ -40,8 +40,8 @@ public class Chapter extends BibleComponent {
 		return identifier;
 	}
 	
-	public ArrayList<Verse> getVerseChildren() {
-		return verses;
-	}
+	//public ArrayList<Verse> getVerseChildren() {
+	//	return verses;
+	//}
 
 }

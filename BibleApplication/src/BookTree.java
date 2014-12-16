@@ -43,6 +43,14 @@ public class BookTree { // implements Iterable<> {
 	public Verse getVerse(String c, String v) { // parameters should be changed to take in a string
 		return (Verse) bookRoot.getChild(c).getChild(v).getComponent();
 	}	
+	
+	public ArrayList<BibleComponent> getBookChildren(String b) {
+		return bookRoot.getChildren();
+	}
+	
+	public ArrayList<BibleComponent> getChapterChildren(String c) {
+		return bookRoot.getChild(c).getChildren();	
+	}
 		
 	/**
 	 * 
@@ -63,8 +71,13 @@ public class BookTree { // implements Iterable<> {
 			children.add(newNode);
 		}
 			
-		public ArrayList<Node<BibleComponent>> getChildren() {
-			return children;
+		public ArrayList<BibleComponent> getChildren() {
+			ArrayList<BibleComponent> childComps = new ArrayList<BibleComponent>();
+			for (int i = 0; i < children.size(); i++) {
+				BibleComponent bc = children.get(i).getComponent();
+				childComps.add(bc);
+			}
+			return childComps;
 		}
 		
 		/**

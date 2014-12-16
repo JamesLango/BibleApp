@@ -7,7 +7,7 @@ import java.io.File;
 
 public class ProcessInput
 {
-private final String[] validCommands = {"help", "exit", "count", "verses", "location", "findChapter", "findRange", "findVerse"};
+private final String[] validCommands = {"help", "exit", "count", "verses", "location", "findchapter", "findRange", "findVerse"};
 private String commandWord;
 private BibleSearch bSearch;
 private String commandArr[];
@@ -24,7 +24,8 @@ private boolean running = true;
 	{
 		commandWord = commandArr[0];
 		this.commandArr = commandArr;
-		System.out.print(commandWord);
+		System.out.println(commandWord);
+		System.out.println(commandArr[1] + " " + commandArr[2]);
 		
 		if(validCommand())
 		{
@@ -36,6 +37,21 @@ private boolean running = true;
 			if (commandWord.equals("exit"))
 			{
 				exit(); 
+			}
+			
+			if(commandWord.equals("findchapter"))
+			{
+				System.out.println("HERE");
+				if(commandArr[1]!=null && commandArr[2]!=null )
+				{
+					
+					System.out.println(bSearch.findChapter(commandArr[1],commandArr[2]));
+				}
+				
+				else
+				{
+					errorMessage();
+				}
 			}
 			
 			if(commandWord.equals("count"))
@@ -92,7 +108,7 @@ private boolean running = true;
 			{
 				if(commandArr[1]!=null && commandArr[2]!=null)
 				{
-					bSearch.findChapter(commandArr[1], commandArr[2]);
+					System.out.println(bSearch.findChapter(commandArr[1], commandArr[2]));
 				}
 				
 				else
@@ -105,7 +121,7 @@ private boolean running = true;
 			{
 				if(commandArr[1]!=null && commandArr[2]!=null && commandArr[3]!=null && commandArr[4]!=null)
 				{
-					bSearch.findRange(commandArr[1],commandArr[2],commandArr[3],commandArr[4]);
+					System.out.println(bSearch.findRange(commandArr[1],commandArr[2],commandArr[3],commandArr[4]));
 				}
 				
 				else
@@ -114,18 +130,7 @@ private boolean running = true;
 				}
 			}
 		
-			if(commandWord.equals("findChapter"))
-			{
-				if(commandArr[1]!=null && commandArr[2]!=null )
-				{
-					bSearch.findChapter(commandArr[1],commandArr[2]);
-				}
-				
-				else
-				{
-					errorMessage();
-				}
-			}
+			
 			
 			
 	}

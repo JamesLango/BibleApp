@@ -21,6 +21,10 @@ public class BibleStore {
 		words = new HashMap<String, Word>();
 	}
 	
+	public BookTree getBookTree(String b) {
+		return books.get(b);
+	}
+	
 	public HashMap<String, Word> getWords() {
 		return words;
 	}
@@ -130,13 +134,6 @@ public class BibleStore {
 				catch (Exception e) { }
 			}
 		}	 
-		//checkBooksStored();
-	}
-	
-	public void checkBooksStored() {
-		System.out.println(books.containsKey("Ken1") + "Ken1"); // checks
-		System.out.println(books.containsKey("Ken2") + "Ken2");//
-		System.out.println(books.containsKey("Peter") + "Peter");//
 	}
 	
 	
