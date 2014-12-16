@@ -73,15 +73,17 @@ public class BibleStore {
 					System.out.println("First line is: " + line);
 					Chapter chapter = new Chapter(j.toString());
 					bookTree.addChapter(chapter.getIdentifier());
-					System.out.println("Currently storing chapter: " + bookTree.getChapter(j.toString())); // THIS IS ALWAYS 0??????????
+					System.out.println("Currently storing chapter: " + bookTree.getChapter(j.toString()));
 					System.out.println(j);
 					
-					for (Integer k = 0; nextVerse && !line.trim().isEmpty(); k++) // there is still a verse left         ////// RETHINK:::::: readLine will move it on, 
+					for (Integer k = 0; nextVerse && !line.trim().isEmpty(); k++) // there is still a verse left   
 					{		
 						System.out.println("For verse: " + k);
-						String verseLine = line; // this will be the line read in from processInput	
-						//String[] wordArr = verseLine.split("[a-zA-Z]|'"); // an array of all the words and the punctuation
-						String[] wordArr = verseLine.toLowerCase().split(" "); // an array of all the words and the punctuation
+						String verseLine = line.replaceAll("\\p{Punct}+[']", "");; // this will be the line read in from processInput	
+						String[] wordArr = verseLine.toLowerCase().split("[^a-z0-9']"); // an array of all the words 
+						//String[] wordArr = verseLine.toLowerCase().split(" "); // an array of all the words and the punctuation
+						
+						
 						
 						
 						Verse verse = new Verse(verseLine, k.toString());

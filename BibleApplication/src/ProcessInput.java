@@ -24,6 +24,7 @@ private boolean running = true;
 	{
 		commandWord = commandArr[0];
 		this.commandArr = commandArr;
+		System.out.print(commandWord);
 		
 		if(validCommand())
 		{
@@ -32,12 +33,12 @@ private boolean running = true;
 				outputHelp();
 			}
 			
-			else if (commandWord.equals("exit"))
+			if (commandWord.equals("exit"))
 			{
 				exit(); 
 			}
 			
-			else if(commandWord.equals("count"))
+			if(commandWord.equals("count"))
 			{
 				if(this.commandArr[1] != null)
 				{
@@ -60,24 +61,25 @@ private boolean running = true;
 				}
 			}
 			
-			else if(commandWord.equals("verses"))
-			{
-				if(bSearch.containsWord(commandArr[1]))
-					{
-						bSearch.getVerses(commandArr[1]);
-					}
-					
-					else
-					{
-						System.out.print("The word was not found.");
-					}
-			}
-					
-			else if(commandWord.equals("location"))
+			if(commandWord.equals("verses"))
 			{
 				if(bSearch.containsWord(commandArr[1]))
 				{
-					bSearch.getLocations(commandArr[1]);
+					bSearch.getVerses(commandArr[1]);
+				}
+					
+				else
+				{
+					System.out.print("The word was not found.");
+				}
+			}
+					
+			if(commandWord.equals("location"))
+			{
+				System.out.print("Retrieving location of:"+commandArr[1]+"\n");
+				if(bSearch.containsWord(commandArr[1]))
+				{
+					System.out.print(bSearch.getLocations(commandArr[1]));
 				}
 					
 				else
@@ -86,7 +88,7 @@ private boolean running = true;
 				}	
 			}
 		
-			else if(commandWord.equals("findChapter"))
+			if(commandWord.equals("findChapter"))
 			{
 				if(commandArr[1]!=null && commandArr[2]!=null)
 				{
@@ -99,7 +101,7 @@ private boolean running = true;
 				}
 			}
 		
-			else if(commandWord.equals("findRange"))
+			if(commandWord.equals("findRange"))
 			{
 				if(commandArr[1]!=null && commandArr[2]!=null && commandArr[3]!=null && commandArr[4]!=null)
 				{
@@ -112,7 +114,7 @@ private boolean running = true;
 				}
 			}
 		
-			else if(commandWord.equals("findChapter"))
+			if(commandWord.equals("findChapter"))
 			{
 				if(commandArr[1]!=null && commandArr[2]!=null )
 				{
@@ -162,7 +164,7 @@ private boolean running = true;
 	
 	public boolean validCommand()
 	{
-		for(int i=0; i<=validCommands.length; i++)
+		for(int i=0; i<validCommands.length; i++)
 		{
 			if(commandWord.equals(validCommands[i]))
 			{
