@@ -8,24 +8,14 @@ import java.util.ArrayList;
 
 public class Book extends BibleComponent {
 	
-	//private ArrayList<Chapter> chapters; >> now in the tree
-	
 	public Book (String name)
 	{	
 		super(name);
-		//chapters = new ArrayList<>();
 	}
 	
 	/**
-	 * A method to retrieve a specific chapter from the collection and return it.
-	 * @param chapter number to be retrieved.
-	 * @return chapter object referenced by chapter number.
+	 * Return the string representation of this book object.
 	 */
-	//public Chapter getChapter(Integer chapNo)
-	//{
-	//	return chapters.get(chapNo-1);	
-	//}
-	
 	public String toString() {
 		return identifier;
 	}

@@ -3,6 +3,7 @@
  * This will store each word of the verse. 
  */
 public class Verse extends BibleComponent {
+	// the line of the bible this verse contains
 	private String line;
 	
 	public Verse(String l, String index)
@@ -12,22 +13,20 @@ public class Verse extends BibleComponent {
 	}
 	
 	/**
-	 * A method to add a word to this verse collection.
-	 * @param The word to be added to the collection.
+	 * Retrieve the sentence this verse object contains.
+	 * 
+	 * @return The sentence in this verse.
 	 */
-	
-	public void addWord(String word)
-	{
-		line += word;	
-	}
-	
 	public String getVerse()
 	{
 		return line;
 	}
 	
+	/**
+	 * Return the string representation of this verse object.
+	 */
 	public String toString() {
-		return line;
+		return identifier + " " + line;
 	}
 
 
