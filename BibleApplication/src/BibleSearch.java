@@ -84,6 +84,9 @@ public class BibleSearch {
 		return bible;
 	}
 	
+	public void getWords() {
+		bible.wordList();
+	}
 	
 	// algorithms for retrieval omitted
 }

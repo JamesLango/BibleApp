@@ -38,8 +38,9 @@ public class TUI {
 		System.out.println("Please enter test input");
 		userInput = "";
 		
-		userInput = user_input.nextLine();
+		userInput = user_input.nextLine().toLowerCase();
 		commandString = splitToArray(userInput);
+		//commandString = userInput.split("[a-zA-Z']");
 		processInput.processCommand(commandString);
 		
 	}

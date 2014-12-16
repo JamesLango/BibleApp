@@ -80,33 +80,36 @@ public class BibleStore {
 					{		
 						System.out.println("For verse: " + k);
 						String verseLine = line; // this will be the line read in from processInput	
-						String[] wordArr = verseLine.split(" "); // an array of all the words and the punctuation
+						//String[] wordArr = verseLine.split("[a-zA-Z]|'"); // an array of all the words and the punctuation
+						String[] wordArr = verseLine.toLowerCase().split(" "); // an array of all the words and the punctuation
+						
 						
 						Verse verse = new Verse(verseLine, k.toString());
 						bookTree.addVerse(verse.getVerse(), chapter.getIdentifier());		
 								
-						// if statement to check whether the word that has been scanned in is unique
-									
-						Word w = new Word("word");
-									
-						if(!words.containsKey(w.getString())) //
-						{
-							words.put(w.getString(), w);				
+						for (int m = 0; m < wordArr.length; m++) {			
+							Word w = new Word(wordArr[m]);
+										
+							if(!words.containsKey(w.getString())) //
+							{
+								words.put(w.getString(), w);				
+							}
+							words.get(w.getString()).getWordObject().incrementWordCount();
+							Location loc = new Location(book, chapter, verse);
+							words.get(w.getString()).getWordObject().updateLocList(loc);
+							System.out.println(words.get(w.getString()));
 						}
-						words.get(w.getString()).getWordObject().incrementWordCount();
-						Location loc = new Location(book, chapter, verse);
-						words.get(w.getString()).getWordObject().updateLocList(loc);
+						
 						
 						line = r.readLine();
 						if(line == null) {
-						nextVerse = false;						
+							nextVerse = false;						
 						}
 						
 					}
 					if ((nextLine = r.readLine()) == null) {
 						nextChapter = false;
 					}
-					//nextLine = r.readLine();//nextChapter = r.readLine();
 				} 
 				
 			}
@@ -159,6 +162,15 @@ public class BibleStore {
 			}
 		}
 		return true;
+	}
+	
+	public void wordList() {
+		String wordList = "Here are the words: \n";
+		String[] wordSet = (String[]) words.keySet().toArray();
+		for (int i = 0; i < wordSet.length; i++) {
+			wordList += wordSet[i] + "\n";
+		}
+		System.out.println(wordList + " " + words.size());
 	}
 }
 
