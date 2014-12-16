@@ -49,7 +49,9 @@ public class BookTree { // implements Iterable<> {
 	}
 	
 	public ArrayList<BibleComponent> getChapterChildren(String c) {
-		return bookRoot.getChild(c).getChildren();	
+		return bookRoot.getChild(c).getChildren();
+		
+	
 	}
 		
 	/**
@@ -76,6 +78,7 @@ public class BookTree { // implements Iterable<> {
 			for (int i = 0; i < children.size(); i++) {
 				BibleComponent bc = children.get(i).getComponent();
 				childComps.add(bc);
+				
 			}
 			return childComps;
 		}

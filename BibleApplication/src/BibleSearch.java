@@ -71,11 +71,9 @@ public class BibleSearch {
 		System.out.println("The book is :" + book);
 		System.out.println("The chapter is :" + chapter);
 		ArrayList<BibleComponent> verses = new ArrayList<BibleComponent>();
-		
-		verses = bible.getBookTree(book).getChapterChildren(chapter);
-		
-		
-		
+	
+		System.out.println(bible.getBookTree(book)==null);
+		verses = bible.getBible().get(book).getChapterChildren(chapter);
 		
 		for (int i = 0; i < verses.size(); i++) {
 			 chapterOutput += verses.get(i).getIdentifier() + " " + verses.get(i).toString() + "\n";

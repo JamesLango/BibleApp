@@ -25,7 +25,7 @@ private boolean running = true;
 		commandWord = commandArr[0];
 		this.commandArr = commandArr;
 		System.out.println(commandWord);
-		System.out.println(commandArr[1] + " " + commandArr[2]);
+		//System.out.println(commandArr[1] + " " + commandArr[2]);
 		
 		if(validCommand())
 		{
