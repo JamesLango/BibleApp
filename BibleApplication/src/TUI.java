@@ -47,7 +47,8 @@ public class TUI {
 	
 	public static String[] splitToArray(String s)
 	{
-		return userInput.split("\\s");
+		String stripped = s.replaceAll("\\p{Punct}+[']", "");
+		return stripped.split("\\s");
 	}
 	
 	public static void fileInput()

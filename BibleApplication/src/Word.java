@@ -57,9 +57,9 @@ public class Word {
 		
 		for (int i = 0; i < locationList.size(); i++) 
 		{
-			locs += locationList.get(i).toString() + "\n"; // go through tree
+			System.out.print("In loc list");
+			locs += locationList.get(i).toString() + "\n";
 		}
-		
 		return locs;
 	}
 }
