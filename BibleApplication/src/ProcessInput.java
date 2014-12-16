@@ -39,20 +39,6 @@ private boolean running = true;
 				exit(); 
 			}
 			
-			if(commandWord.equals("findchapter"))
-			{
-				System.out.println("HERE");
-				if(commandArr[1]!=null && commandArr[2]!=null )
-				{
-					
-					System.out.println(bSearch.findChapter(commandArr[1],commandArr[2]));
-				}
-				
-				else
-				{
-					errorMessage();
-				}
-			}
 			
 			if(commandWord.equals("count"))
 			{
