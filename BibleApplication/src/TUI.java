@@ -24,15 +24,18 @@ public class TUI {
 		
 		while(processInput.running())
 		{
-			while(!hasFile)
+			while(!hasFile)// while a file hasn't been entered in.
 			{
 			fileInput();
 			}
-		testInput();
+		userInput();
 		}
 	}
 	
-	public static void testInput()
+	/**
+	 * Method that recieves user input, converts it to lower case and stores it in an array, this is then passed to the process command method.
+	 */
+	public static void userInput()
 	{
 		Scanner user_input = new Scanner(System.in);
 		System.out.println("Please type your input. Type 'help' to display a help screen.");
@@ -45,12 +48,20 @@ public class TUI {
 		
 	}
 	
+	/**
+	 * Splits the string passed in to an array and returns it.
+	 * @param s
+	 * @return String[]
+	 */
 	public static String[] splitToArray(String s)
 	{
 		String stripped = s.replaceAll("\\p{Punct}+[']", "");
 		return stripped.split("\\s");
 	}
 	
+	/**
+	 * Receives a file as input and passes it to the processFile method in ProcessInput.
+	 */
 	public static void fileInput()
 	{
 		Scanner user_input = new Scanner(System.in);
@@ -69,10 +80,7 @@ public class TUI {
 			System.out.print("File not recognised please try again.\n");
 		}
 		
-		//System.out.print(fileLocation);
-		//System.out.print(folder.isDirectory());
-		//for (final File fileEntry : folder.listFiles()) {
-	    //System.out.println("FileEntry Directory "+fileEntry);
+
 		}
 }
 
