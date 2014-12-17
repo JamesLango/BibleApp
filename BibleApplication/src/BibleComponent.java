@@ -17,10 +17,16 @@ public abstract class BibleComponent {
 	 * 
 	 * @return The identifier.
 	 */
-	public String getIdentifier() {
+	public String getIdentifier() 
+	{
 		return identifier;
 	}
 	
+	/**
+	 * Retrieve the value of this bible component object in String representation.
+	 * 
+	 * @return The string representation of the value of this object.
+	 */
 	public abstract String getValue();
 	
 	/**

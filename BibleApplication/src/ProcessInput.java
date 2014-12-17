@@ -7,7 +7,7 @@ import java.io.File;
 
 public class ProcessInput
 {
-private final String[] validCommands = {"help", "exit", "count", "verses", "location", "findchapter", "findRange", "findverse"};
+private final String[] validCommands = {"help", "exit", "count", "verses", "location", "findchapter", "findrange", "findverse"};
 private String commandWord;
 private BibleSearch bSearch;
 private String commandArr[];
@@ -25,7 +25,6 @@ private boolean running = true;
 		commandWord = commandArr[0];
 		this.commandArr = commandArr;
 		System.out.println(commandWord);
-		//System.out.println(commandArr[1] + " " + commandArr[2]);
 		
 		if(validCommand())
 		{
@@ -64,7 +63,6 @@ private boolean running = true;
 					errorMessage();
 				}
 					
-				}
 			}
 			
 			if(commandWord.equals("verses"))
@@ -111,20 +109,19 @@ private boolean running = true;
 		
 			if(commandWord.equals("findchapter"))
 			{
-				if(commandArr[1]!=null && commandArr[2]!=null)
+				if(commandArr.length == 3 && commandArr[1]!=null && commandArr[2]!=null)
 				{
 					System.out.println(bSearch.findChapter(commandArr[1], commandArr[2]));
-				}
-				
+				}		
 				else
 				{
-					errorMessage();
+						errorMessage();
 				}
 			}
 		
 			if(commandWord.equals("findrange"))
 			{
-				if(commandArr[1]!=null && commandArr[2]!=null && commandArr[3]!=null && commandArr[4]!=null)
+				if(commandArr.length == 5 && commandArr[1]!=null && commandArr[2]!=null && commandArr[3]!=null && commandArr[4]!=null)
 				{
 					System.out.println(bSearch.findRange(commandArr[1],commandArr[2],commandArr[3],commandArr[4]));
 				}
@@ -137,7 +134,7 @@ private boolean running = true;
 			
 			if(commandWord.equals("findverse"))
 			{
-				if(commandArr[1]!=null && commandArr[2]!=null && commandArr[3]!=null)
+				if(commandArr.length == 4 && commandArr[1]!=null && commandArr[2]!=null && commandArr[3]!=null)
 				{
 					System.out.println(bSearch.findVerse(commandArr[1],commandArr[2],commandArr[3]));
 				}
@@ -147,8 +144,10 @@ private boolean running = true;
 					errorMessage();
 				}
 			}
-		
-			
+	}
+		else {
+			errorMessage();
+		}
 			
 			
 	}
@@ -173,7 +172,7 @@ private boolean running = true;
 		System.out.println("| Type location <word> to view a list of all the locations in which the specified word occurs.           |");
 		System.out.println("| Type findChapter <Book Chapter> to view a complete chapter at that location.                           |");
 		System.out.println("| Type findVerse <Book Chapter: Verse> to display a specific verse at that location.                     |");
-		System.out.println("| Type findRange <Book Chapter: startVerse - endVerse> to display a list of verses within that range.     |");
+		System.out.println("| Type findRange <Book Chapter: startVerse - endVerse> to display a list of verses within that range.    |");
 		System.out.println("**********************************************************************************************************");
 	}
 	

@@ -25,7 +25,8 @@ public class Verse extends BibleComponent {
 	/**
 	 * Return the string representation of this verse object.
 	 */
-	public String toString() {
+	public String toString() 
+	{
 		return identifier + " " + line;
 	}
 

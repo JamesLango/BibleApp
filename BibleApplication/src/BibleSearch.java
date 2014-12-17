@@ -1,20 +1,26 @@
 import java.util.ArrayList;
-/*
- * Contains algorithms to search using input from the scanner class
- * through items in the bibleMap.
- */
 
+/**
+ * A class to model the algorithms to search through the bible data structure.
+ */
 public class BibleSearch {
 
+	// the object containing the representation and data structure for the bible
 	private BibleStore bStore;
 	
-	public BibleSearch() {
-		
+	public BibleSearch() 
+	{
 		bStore = new BibleStore();		
 	}
 	
-	public String getVerses(String w) {
-		
+	/**
+	 * Retrieve the string representation of all the verses where a specified word occurs.
+	 * 
+	 * @param w The word.
+	 * @return The string representation of all the verses in which this word occurs.
+	 */
+	public String getVerses(String w)
+	{
 		ArrayList<Location> locs = new ArrayList<Location>();
 		Word word = bStore.getWords().get(w);
 		locs = word.getLocationList();
@@ -71,11 +77,10 @@ public class BibleSearch {
 		System.out.println("The chapter is :" + chapter);
 		ArrayList<BibleComponent> verses = new ArrayList<BibleComponent>();
 	
-		System.out.println(bStore.getBookTree(book)==null);
-		verses = bStore.getBible().get(book).getChapterChildren(chapter);
+		verses = bStore.getBookTree(book).getChapterChildren(chapter);
 		
 		for (int i = 0; i < verses.size(); i++) {
-			 chapterOutput += verses.get(i).getIdentifier() + " " + verses.get(i).toString() + "\n";
+			 chapterOutput += verses.get(i).getIdentifier() + " hi " + verses.get(i).toString() + "\n";
 		}
 		
 		return chapterOutput;
@@ -85,9 +90,11 @@ public class BibleSearch {
 		return bStore;
 	}
 	
-	public void getWords() {
-		bStore.wordList();
+	public int getChapterSize(String book, String chapter) {
+		return bStore.getBookTree(book).getBookChildren(book).size();
 	}
 	
-	// algorithms for retrieval omitted
+	public int getVerseSize(String book, String chapter) {
+		return bStore.getBookTree(book).getChapterChildren(chapter).size();
+	}
 }

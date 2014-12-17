@@ -5,7 +5,6 @@ import java.util.ArrayList;
  * This will hold many chapter objects.
  *
  */
-
 public class Book extends BibleComponent {
 	
 	public Book (String name)
@@ -13,6 +12,11 @@ public class Book extends BibleComponent {
 		super(name);
 	}
 	
+	/**
+	 * Retrieve the value of this book object.
+	 * 
+	 * @return null
+	 */
 	public String getValue()
 	{
 		return null;
@@ -20,8 +24,11 @@ public class Book extends BibleComponent {
 	
 	/**
 	 * Return the string representation of this book object.
+	 * 
+	 * @return The string representation.
 	 */
-	public String toString() {
+	public String toString() 
+	{
 		return identifier;
 	}
 }
