@@ -76,7 +76,7 @@ public class BibleStore {
 		File[] files = bibleSource.listFiles();
 		long startPop = System.currentTimeMillis(); // start recording the store time
 		
-		for (int i = 1; i < files.length; i++) // while there is still a book (file) in the folder
+		for (int i = 0; i < files.length; i++) // while there is still a book (file) in the folder
 		{
 			boolean nextChapter = true; // indicate if there is still a next chapter to be read in
 			boolean nextVerse = true; // indicate if there is still a next verse to be read in
@@ -107,7 +107,7 @@ public class BibleStore {
 					Chapter chapter = new Chapter(j.toString()); // create a new chapter object with this index as the identifier
 					bookTree.addChapter(chapter); // add the chapter to the data structure
 					
-					for (Integer k = 1; nextVerse && !line.trim().isEmpty(); k++) // there is still a verse left   
+					for (Integer k = 0; nextVerse && !line.trim().isEmpty(); k++) // there is still a verse left   
 					{		
 						String verseLine = line.replaceAll("\\p{Punct}+[']", ""); // replaces all punctuation in the line except apostrophes with no space (removes)
 						String[] wordArr = verseLine.toLowerCase().split("[^a-z0-9']"); // an array of all the words, splitting around the words
@@ -167,12 +167,17 @@ public class BibleStore {
 	/**
 	 * Retrieve whether or not the book is stored in the data structure.
 	 * 
-	 * @param s The name of the book.
+	 * @param b The name of the book.
 	 * @return true If the book is stored.
 	 */
-	public boolean containsBook(String s) 
+	public boolean containsBook(String b) 
 	{ 
-		return books.containsKey(s);
+		return books.containsKey(b);
+	}
+	
+	public boolean containsChapter(String b, String c) 
+	{
+		return (books.get(b).getChapter(c) != null);
 	}
 	
 	/**
