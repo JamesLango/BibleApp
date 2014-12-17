@@ -21,6 +21,8 @@ public abstract class BibleComponent {
 		return identifier;
 	}
 	
+	public abstract String getValue();
+	
 	/**
 	 * Return a string representation of this component.
 	 */

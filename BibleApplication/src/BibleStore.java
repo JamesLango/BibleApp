@@ -41,8 +41,8 @@ public class BibleStore {
 		
 		File bibleSource = new File(f);
 		File[] files = bibleSource.listFiles();
-		System.out.println("The number of files in the folder is: " + files.length);
-		
+		//System.out.println("The number of files in the folder is: " + files.length);
+		long startPop = System.currentTimeMillis();
 		
 		for (int i = 0; i < files.length; i++) // while there is still a book 
 		{
@@ -50,22 +50,22 @@ public class BibleStore {
 			boolean nextVerse = true;
 		
 			String[] file = files[i].getName().split(".txt");
-			Book book = new Book(file[0]); // remove extension, and then use the first index (name)
+			Book book = new Book(file[0].toLowerCase()); // remove extension, and then use the first index (name)
 			BookTree bookTree = new BookTree(book);
 			books.put(book.getIdentifier(), bookTree);
-			System.out.println("For book with name: " + book.getIdentifier());
+			//System.out.println("For book with name: " + book.getIdentifier());
 			BufferedReader r = null;
 			
 			try {
 				r = new BufferedReader(new FileReader(files[i]));
 				String line = r.readLine(); // first line of the book (title)
-				System.out.println(">> Currently storing book: " + line);
-				
+				//System.out.println(">> Currently storing book: " + line);
+				//
 				line = r.readLine(); // < blank line
 				
 				String nextLine = r.readLine(); // < CHAPTER
 				
-				for(Integer j = 0; nextLine != null && line.trim().isEmpty() && nextChapter; j++) // while there is still a chapter in the book // the line is blank
+				for(Integer j = 1; nextLine != null && line.trim().isEmpty() && nextChapter; j++) // while there is still a chapter in the book // the line is blank
 				{
 					String[] tmp = line.split(" ");
 					while (!checkIfUpperCase(tmp[0])) { // check if the line starts with CHAPTER, else read next line until so
@@ -74,24 +74,24 @@ public class BibleStore {
 						tmp = line.split(" ");
 					}
 					line = nextLine; // 1 once upon a time
-					System.out.println("First line is: " + line);
+					//System.out.println("First line is: " + line);
 					Chapter chapter = new Chapter(j.toString());
-					bookTree.addChapter(chapter.getIdentifier());
-					System.out.println("Currently storing chapter: " + bookTree.getChapter(j.toString()));
-					System.out.println(j);
+					bookTree.addChapter(chapter);
+					//System.out.println("Currently storing chapter: " + bookTree.getChapter(j.toString()));
+					//System.out.println(j);
 					
 					for (Integer k = 0; nextVerse && !line.trim().isEmpty(); k++) // there is still a verse left   
 					{		
-						System.out.println("For verse: " + k);
+						//System.out.println("For verse: " + k);
 						String verseLine = line.replaceAll("\\p{Punct}+[']", "");; // this will be the line read in from processInput	
 						String[] wordArr = verseLine.toLowerCase().split("[^a-z0-9']"); // an array of all the words 
 						//String[] wordArr = verseLine.toLowerCase().split(" "); // an array of all the words and the punctuation
 						
 						
-						
-						
 						Verse verse = new Verse(verseLine, k.toString());
-						bookTree.addVerse(verse.getVerse(), chapter.getIdentifier());		
+						chapter.addVerse(verse);
+						System.out.println(chapter.getVerseChildren().size());
+						//bookTree.addVerse(verse, chapter.getIdentifier());		
 								
 						for (int m = 0; m < wordArr.length; m++) {			
 							Word w = new Word(wordArr[m]);
@@ -103,7 +103,7 @@ public class BibleStore {
 							words.get(w.getString()).getWordObject().incrementWordCount();
 							Location loc = new Location(book, chapter, verse);
 							words.get(w.getString()).getWordObject().updateLocList(loc);
-							System.out.println(words.get(w.getString()));
+							//System.out.println(words.get(w.getString()));
 						}
 						
 						
@@ -133,7 +133,13 @@ public class BibleStore {
 				}
 				catch (Exception e) { }
 			}
-		}	 
+		}	
+		
+		long endPop = System.currentTimeMillis();
+		long storageTime = endPop - startPop;
+		
+		System.out.println("It took: "+ storageTime+"ms to store the file.");
+		
 	}
 	
 	
@@ -147,7 +153,8 @@ public class BibleStore {
 	//}
 	
 	public String getVerseString(Location l) {
-		return books.get(l.getBookName()).getVerse(l.getChapterLocation(), l.getVerseLocation()).toString();
+		return l.getVerseString();
+		//return books.get(l.getBookName()).getVerse(l.getChapterLocation(), l.getVerseLocation()).toString();
 		// physical 
 	}	
 	

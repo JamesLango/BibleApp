@@ -17,7 +17,7 @@ public class Verse extends BibleComponent {
 	 * 
 	 * @return The sentence in this verse.
 	 */
-	public String getVerse()
+	public String getValue()
 	{
 		return line;
 	}

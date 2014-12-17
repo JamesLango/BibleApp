@@ -7,7 +7,7 @@ import java.io.File;
 
 public class ProcessInput
 {
-private final String[] validCommands = {"help", "exit", "count", "verses", "location", "findchapter", "findRange", "findVerse"};
+private final String[] validCommands = {"help", "exit", "count", "verses", "location", "findchapter", "findRange", "findverse"};
 private String commandWord;
 private BibleSearch bSearch;
 private String commandArr[];
@@ -46,7 +46,11 @@ private boolean running = true;
 				{
 					if(bSearch.containsWord(commandArr[1]))
 					{
-						System.out.print((bSearch.getWordCount(commandArr[1])));
+						long start = System.nanoTime();
+						System.out.println(commandArr[1]+" appears: " + (bSearch.getWordCount(commandArr[1]))+" times.");
+						long end = System.nanoTime();
+						long retrieve = end - start;
+						System.out.println("That command took: "+retrieve/1000+"ms.");
 					}
 					
 					else
@@ -67,7 +71,14 @@ private boolean running = true;
 			{
 				if(bSearch.containsWord(commandArr[1]))
 				{
-					bSearch.getVerses(commandArr[1]);
+					long start = System.nanoTime();
+					String retrieval = bSearch.getVerses(commandArr[1]);
+					long end = System.nanoTime();
+					long retrieve = end - start;
+					
+					System.out.println("The verses in which "+commandArr[1] + " occurs:\n"+retrieval);
+
+					System.out.println("That command took: "+retrieve/1000+"ms.");
 				}
 					
 				else
@@ -81,7 +92,15 @@ private boolean running = true;
 				System.out.print("Retrieving location of:"+commandArr[1]+"\n");
 				if(bSearch.containsWord(commandArr[1]))
 				{
-					System.out.print(bSearch.getLocations(commandArr[1]));
+					long start = System.currentTimeMillis();
+					String retrieval = bSearch.getLocations(commandArr[1]);
+					long end = System.currentTimeMillis();
+					
+					long retrieve = end - start;
+					
+					System.out.print("Locations in which "+commandArr[1]+ " occurs:\n"+retrieval);
+					System.out.println("That command took: "+ retrieve +"ms.");
+					
 				}
 					
 				else
@@ -90,7 +109,7 @@ private boolean running = true;
 				}	
 			}
 		
-			if(commandWord.equals("findChapter"))
+			if(commandWord.equals("findchapter"))
 			{
 				if(commandArr[1]!=null && commandArr[2]!=null)
 				{
@@ -103,11 +122,24 @@ private boolean running = true;
 				}
 			}
 		
-			if(commandWord.equals("findRange"))
+			if(commandWord.equals("findrange"))
 			{
 				if(commandArr[1]!=null && commandArr[2]!=null && commandArr[3]!=null && commandArr[4]!=null)
 				{
 					System.out.println(bSearch.findRange(commandArr[1],commandArr[2],commandArr[3],commandArr[4]));
+				}
+				
+				else
+				{
+					errorMessage();
+				}
+			}
+			
+			if(commandWord.equals("findverse"))
+			{
+				if(commandArr[1]!=null && commandArr[2]!=null && commandArr[3]!=null)
+				{
+					System.out.println(bSearch.findVerse(commandArr[1],commandArr[2],commandArr[3]));
 				}
 				
 				else
@@ -129,12 +161,23 @@ private boolean running = true;
 	
 	public void outputHelp()
 	{
-		System.out.println("To use this program please take note and make use of the following commands,");
-		System.out.println("please ensure to use the actual words instead of the place holder values given,");
-		System.out.println("which are in <angle brackets> These are used as a technique used to show the user the format in which ");
-		System.out.println("the program expects to receive input.");
-		System.out.println("To view this message again at any point please type help.");
+		System.out.println("|********************************************************************************************************|");
+		System.out.println("| To use this program please take note and make use of the following commands,                           |");
+		System.out.println("| please ensure to use the actual words instead of the place holder values given,                        |");
+		System.out.println("| which are in <angle brackets> These are used as a technique used to show the user the format in which  |");
+		System.out.println("| the program expects to receive input.                                                                  |");
+		System.out.println("| To view this message again at any point please type help.                                              |");
+		System.out.println("| Type exit to exit this program.                                                                        |");
+		System.out.println("| Type count <word> to view the amount of times that word has occured.                                   |");
+		System.out.println("| Type verses <word> to view the verses in which a certain word occurs.                                  |");
+		System.out.println("| Type location <word> to view a list of all the locations in which the specified word occurs.           |");
+		System.out.println("| Type findChapter <Book Chapter> to view a complete chapter at that location.                           |");
+		System.out.println("| Type findVerse <Book Chapter: Verse> to display a specific verse at that location.                     |");
+		System.out.println("| Type findRange <Book Chapter: startVerse - endVerse> to display a list of verses within that range.     |");
+		System.out.println("**********************************************************************************************************");
 	}
+	
+	
 	
 	public void exit()
 	{

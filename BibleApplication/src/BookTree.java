@@ -15,21 +15,21 @@ public class BookTree { // implements Iterable<> {
 	public BookTree(Book b) {
 		
 		bookRoot = new Node<BibleComponent>(b);
-		System.out.println("Book ID : " + bookRoot.getComponent().getIdentifier());
+		//System.out.println("Book ID : " + bookRoot.getComponent().getIdentifier());
 		
 	}
 	
-	public void addChapter(String c) { 
-		Chapter chapter = new Chapter(c);
-		System.out.println("Chapter index is " + c);
-		System.out.println(chapter.toString());
-		bookRoot.addChild(chapter);
+	public void addChapter(Chapter c) { 
+		//Chapter chapter = new Chapter(c);
+		//System.out.println("Chapter index is " + c);
+		//System.out.println(chapter.toString());
+		bookRoot.addChild(c);
 	}
 	
-	public void addVerse(String v, String c) { 
-		Verse verse = new Verse(v, c);
-		System.out.println("The verse is stored as: " + verse.toString());
-		bookRoot.getChild(c).addChild(verse);
+	public void addVerse(Verse v, String c) { 
+		
+		bookRoot.getChild(c).addChild(v);
+		System.out.println("The verse is stored as: " + v.getIdentifier());
 	}
 	
 	public Book getBook() {
@@ -40,9 +40,7 @@ public class BookTree { // implements Iterable<> {
 		return (Chapter) bookRoot.getChild(c).getComponent();
 	}
 			
-	public Verse getVerse(String c, String v) { // parameters should be changed to take in a string
-		return (Verse) bookRoot.getChild(c).getChild(v).getComponent();
-	}	
+
 	
 	public ArrayList<BibleComponent> getBookChildren(String b) {
 		return bookRoot.getChildren();

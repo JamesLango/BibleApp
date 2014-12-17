@@ -35,7 +35,7 @@ public class TUI {
 	public static void testInput()
 	{
 		Scanner user_input = new Scanner(System.in);
-		System.out.println("Please enter test input");
+		System.out.println("Please type your input. Type 'help' to display a help screen.");
 		userInput = "";
 		
 		userInput = user_input.nextLine().toLowerCase();

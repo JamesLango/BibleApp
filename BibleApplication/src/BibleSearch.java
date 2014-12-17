@@ -6,62 +6,61 @@ import java.util.ArrayList;
 
 public class BibleSearch {
 
-	private BibleStore bible;
+	private BibleStore bStore;
 	
 	public BibleSearch() {
 		
-		bible = new BibleStore();		
+		bStore = new BibleStore();		
 	}
 	
 	public String getVerses(String w) {
 		
 		ArrayList<Location> locs = new ArrayList<Location>();
-		Word word = bible.getWords().get(w);
+		Word word = bStore.getWords().get(w);
 		locs = word.getLocationList();
 		String verses = "";
 		 
 		for (int i = 0; i < locs.size(); i++)
 		{
-			verses += bible.getVerseString(locs.get(i)) + "\n";
+			verses += locs.get(i).getVerseString() + "\n";
 		}
 		return verses;	
 	}
 	
 	public int getWordCount(String w) {
-		return bible.getWords().get(w).getWordObject().getCount();
+		return bStore.getWords().get(w).getWordObject().getCount();
 	}
 	
 	public boolean containsWord(String s) {
-		return bible.getWords().containsKey(s);
+		return bStore.getWords().containsKey(s);
 	}
 	
 	public String getLocations(String w) {
-		Word word = bible.getWords().get(w);
+		Word word = bStore.getWords().get(w);
 		return word.getLocationStrings();
 	}
 	
 	public String findVerse(String book, String chapter, String verse) {
 		// Job 4:11
-		Book b = bible.getBible().get(book).getBook();
-		Chapter c = bible.getBible().get(book).getChapter(chapter);
-		Verse v = bible.getBible().get(book).getVerse(chapter, verse);
-		Location l = new Location(b,c,v);
-		
-		return bible.getVerseString(l) + "\n";
+		//Book b = bStore.getBible().get(book).getBook();
+		Integer v = Integer.valueOf(verse);
+		return bStore.getBookTree(book).getChapter(chapter).getVerseChildren().get(v).getValue();
 	}
 	
 	public String findRange(String book, String chapter, String firstVerse, String endVerse) {
 		// Job 4:11-14
-		int end = Integer.parseInt(endVerse);
-		int current = Integer.parseInt(firstVerse);
+		Integer f = Integer.valueOf(firstVerse);
+		Integer e = Integer.valueOf(endVerse);
+		String result = "";
 		
-		String range = "";
+		for(Integer i = f; i<=e; i++ )
+		{
+		String iStr = i.toString();
 		
-		for (int i = current; i < end; i++) {
-			range += findVerse(book, chapter, Integer.toString(current)) + "\n";
+		result +=findVerse(book, chapter, iStr) + "\n";
+		
 		}
-		
-		return range;
+		return result;
 	}
 	
 	public String findChapter(String book, String chapter) {
@@ -72,8 +71,8 @@ public class BibleSearch {
 		System.out.println("The chapter is :" + chapter);
 		ArrayList<BibleComponent> verses = new ArrayList<BibleComponent>();
 	
-		System.out.println(bible.getBookTree(book)==null);
-		verses = bible.getBible().get(book).getChapterChildren(chapter);
+		System.out.println(bStore.getBookTree(book)==null);
+		verses = bStore.getBible().get(book).getChapterChildren(chapter);
 		
 		for (int i = 0; i < verses.size(); i++) {
 			 chapterOutput += verses.get(i).getIdentifier() + " " + verses.get(i).toString() + "\n";
@@ -83,11 +82,11 @@ public class BibleSearch {
 	}
 	
 	public BibleStore getBibleStore() {
-		return bible;
+		return bStore;
 	}
 	
 	public void getWords() {
-		bible.wordList();
+		bStore.wordList();
 	}
 	
 	// algorithms for retrieval omitted

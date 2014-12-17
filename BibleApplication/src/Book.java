@@ -13,6 +13,11 @@ public class Book extends BibleComponent {
 		super(name);
 	}
 	
+	public String getValue()
+	{
+		return null;
+	}
+	
 	/**
 	 * Return the string representation of this book object.
 	 */

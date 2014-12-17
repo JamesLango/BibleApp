@@ -20,6 +20,11 @@ public class Location {
 		return book.getIdentifier();
 	}
 	
+	public String getVerseString()
+	{
+		return verse.getValue();
+	}
+	
 	public String getChapterLocation()
 	{
 		return chapter.getIdentifier();
