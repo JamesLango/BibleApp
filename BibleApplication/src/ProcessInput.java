@@ -2,16 +2,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.io.File;
-// Folder name check it is directory
-// if location of folder given is valid.
 
+/**
+ * A class to process the user input from the TUI, and use it to subsequently run retrieval commands on
+ * the underlying bible data structure.
+ */
 public class ProcessInput
 {
-private final String[] validCommands = {"help", "exit", "count", "verses", "location", "findchapter", "findrange", "findverse"};
-private String commandWord;
-private BibleSearch bSearch;
-private String commandArr[];
-private boolean running = true;
+	// an array of the valid commands the program accepts
+	private final String[] validCommands = {"help", "exit", "count", "verses", "location", "findchapter", "findrange", "findverse"};
+	// the first word in the array is the command word
+	private String commandWord;
+	//
+	private BibleSearch bSearch;
+	private String commandArr[];
+	private boolean running = true;
 
 
 	public ProcessInput()
@@ -148,8 +153,6 @@ private boolean running = true;
 		else {
 			errorMessage();
 		}
-			
-			
 	}
 	
 	public void processFile(String folder)
